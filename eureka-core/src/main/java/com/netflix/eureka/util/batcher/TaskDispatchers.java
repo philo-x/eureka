@@ -32,6 +32,20 @@ public class TaskDispatchers {
         };
     }
 
+    /**
+     *
+     * @param id
+     * @param maxBufferSize：缓存池大小，默认10000
+     * @param workloadSize：工作负载数量，默认250
+     * @param workerCount：工作者线程数量，默认20
+     * @param maxBatchingDelay：批处理延迟，默认500ms
+     * @param congestionRetryDelayMs：拥塞重试延迟，默认1000ms
+     * @param networkFailureRetryMs：网络异常延迟，默认100ms
+     * @param taskProcessor
+     * @param <ID>
+     * @param <T>
+     * @return
+     */
     public static <ID, T> TaskDispatcher<ID, T> createBatchingTaskDispatcher(String id,
                                                                              int maxBufferSize,
                                                                              int workloadSize,

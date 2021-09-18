@@ -97,6 +97,7 @@ public class PeerEurekaNode {
 
         this.serviceUrl = serviceUrl;
         this.config = config;
+        // 最大延迟时间30s
         this.maxProcessingDelayMs = config.getMaxTimeForReplication();
 
         String batcherName = getBatcherName();
@@ -216,6 +217,7 @@ public class PeerEurekaNode {
                         register(info);
                     }
                 } else if (config.shouldSyncWhenTimestampDiffers()) {
+                    // 409: conflict，将服务端返回的实例同步到本地
                     InstanceInfo peerInstanceInfo = (InstanceInfo) responseEntity;
                     if (peerInstanceInfo != null) {
                         syncInstancesIfTimestampDiffers(appName, id, info, peerInstanceInfo);

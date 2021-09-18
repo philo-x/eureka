@@ -219,6 +219,7 @@ class AcceptorExecutor<ID, T> {
 
         private void drainInputQueues() throws InterruptedException {
             do {
+                // 三峡大坝，泄洪
                 drainReprocessQueue();
                 drainAcceptorQueue();
 
